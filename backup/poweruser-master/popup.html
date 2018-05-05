@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Set Page Color Popup</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <style>
+/*    <script>
+
+    $(function() {
+       $.getJSON('whitesupremacy.json', function(d) {
+        console.log(d)
+        console.log("Yo")
+          var cont= d.top20_contributors[0]['user'] + d.top20_contributors[0]['edits'] + d.top20_contributors[0]['url']
+          document.getElementById('contributors').innerHTML = cont
+          })
+</script>*/
+
+    body {;
+      margin: 0px;
+      padding: 10px;
+      background: white ;
+    }
+
+    div:first-child {
+      margin-top: 0px;
+    }
+    h4{
+      font-size: 1.5em;
+    }
+
+    div {
+      cursor: pointer;
+      text-align: center;
+      padding: 1px 3px;
+      font-family: sans-serif;
+      font-size: 1.2em;
+      width: 400px;
+      margin-top: 1px;
+    }
+    div:hover {
+      background: #aaaaaa;
+    }
+    #red {
+      border: 1px solid red;
+      color: red;
+    }
+    #blue {
+      border: 1px solid blue;
+      color: blue;
+    }
+    #green {
+      border: 1px solid green;
+      color: green;
+    }
+    #yellow {
+      border: 1px solid yellow;
+      color: yellow;
+    }
+
+    p{
+      font-size:1.3em;
+    }
+    </style>
+  </head>
+  <body>
+    <h4>Page profile</h4>
+      <p>Page created on:
+        <div id="created">
+
+        </div>
+      </p>
+    </div>
+    <p>Most recent contribution:
+      <div id="last-contrib"></div>
+    </p>
+    <p>Top 20 contributors:
+      <div id="1var"></div>
+      <div id="2var"></div>
+      <div id="3var"></div>
+      <div id="4var"></div>
+      <div id="5var"></div>
+      <div id="6var"></div>
+      <div id="7var"></div>
+      <div id="8var"></div>
+      <div id="9var"></div>
+      <div id="10var"></div>
+      <div id="11var"></div>
+      <div id="12var"></div>
+      <div id="13var"></div>
+      <div id="14var"></div>
+      <div id="15var"></div>
+      <div id="16var"></div>
+      <div id="17var"></div>
+      <div id="18var"></div>
+      <div id="19var"></div>
+      <div id="20var"></div>
+    </p>
+    <p>
+      <div = "graph" ><img src="images/tchgrg.png" style="max-width:100%"></div>
+    </p>
+      <script type="text/javascript" src="users.js"></script>
+  </body>
+</html>
