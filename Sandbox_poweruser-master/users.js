@@ -28,6 +28,7 @@ function get_page(url) {
   var all_user_names = []
   var number_edits = []
   var size_edits = []
+  var all_userboxes = []
   var table_here = document.getElementById("myTable");
   table_here.createTHead()
 
@@ -49,6 +50,8 @@ function get_page(url) {
     }
     // Replacing them in HTML document
 
+    console.log(size_edits)
+
     for (i=0, all_user_names; i < all_user_names.length; i++){
       document.getElementsByClassName("link-user")[i].innerHTML = all_user_names[i]
       document.getElementsByClassName('link-user')[i].href = "https://en.wikipedia.org/wiki/User:" + all_user_names[i];
@@ -57,21 +60,19 @@ function get_page(url) {
     
 
     // Scraping userboxes
-    var all_userboxes = []
     var ubx = new XMLHttpRequest()
     ubx.onload = function() {
       ubx_table = this.responseXML.getElementsByClassName("userboxes")[0]
       if (typeof ubx_table !== "undefined") {
-          all_userboxes.push(ubx_table);
+        all_userboxes.push(ubx_table);
+        // document.getElementsById("ubx").innerHTML = all_userboxes[0]
       }
+      
     } 
-    
 
     ubx.open("GET", "https://en.wikipedia.org/wiki/User:" + all_user_names[i]);
     ubx.responseType = "document";
     ubx.send()
-
-    }
 
 
     // Reading HTML attributes of page retrieved
@@ -87,6 +88,12 @@ function get_page(url) {
       }
       return false;
       }
+      
+    }
+
+    console.log(all_userboxes)
+
+    
 
     }
 
