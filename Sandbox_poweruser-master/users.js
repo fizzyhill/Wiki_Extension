@@ -57,12 +57,13 @@ function get_page(url) {
     
 
     // Scraping userboxes
-    
+    var all_userboxes = []
     var ubx = new XMLHttpRequest()
     ubx.onload = function() {
-    ubx_table = this.responseXML.getElementsByClassName("userboxes")[0]
-    console.log(ubx_table)
-
+      ubx_table = this.responseXML.getElementsByClassName("userboxes")[0]
+      if (typeof ubx_table !== "undefined") {
+          all_userboxes.push(ubx_table);
+      }
     } 
     
 
