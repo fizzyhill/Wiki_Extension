@@ -61,19 +61,31 @@ function get_page(url) {
     var ubx = new XMLHttpRequest()
     ubx.onload = function() {
     ubx_table = this.responseXML.getElementsByClassName("userboxes")[0]
-    console.log(ubx.responseText)
-    
+    console.log(ubx_table)
+
     } 
     
 
     ubx.open("GET", "https://en.wikipedia.org/wiki/User:" + all_user_names[i]);
-    console.log(all_user_names)
     ubx.responseType = "document";
     ubx.send()
 
     }
 
-    
+
+    // Reading HTML attributes of page retrieved
+    function HTMLinXHR() {
+      if (!window.XMLHttpRequest)
+        return false;
+      var req = new window.XMLHttpRequest();
+      req.open('GET', window.location.href, false);
+      try {
+        req.responseType = 'document';
+      } catch(e) {
+        return true;
+      }
+      return false;
+      }
 
     }
 
