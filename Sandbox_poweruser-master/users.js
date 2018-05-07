@@ -28,8 +28,8 @@ function get_page(url) {
   var all_user_names = []
   var number_edits = []
   var size_edits = []
-  var all_userboxes = []
-  var table_here = document.getElementById("myTable");
+  var table_here = document.getElementById("myTable")
+
   table_here.createTHead()
 
 
@@ -50,52 +50,69 @@ function get_page(url) {
     }
     // Replacing them in HTML document
 
-    console.log(size_edits)
-
     for (i=0, all_user_names; i < all_user_names.length; i++){
       document.getElementsByClassName("link-user")[i].innerHTML = all_user_names[i]
       document.getElementsByClassName('link-user')[i].href = "https://en.wikipedia.org/wiki/User:" + all_user_names[i];
       document.getElementsByClassName("cell-2")[i].innerHTML = number_edits[i]
       document.getElementsByClassName("cell-3")[i].innerHTML = size_edits[i]
+    }
+
+
+    var html_string = ''
+    for (i=0, all_user_names; i < 20; i++){
+      // Scraping userboxes
+      var xhr = new XMLHttpRequest()
+      xhr.onload = function() { //getting all userboxes of one user page. 
+      var user_title = this.responseXML.getElementsByClassName("firstHeading")[0]
+      console.log(user_title.textContent)
+      var ubx_tables = this.responseXML.getElementsByClassName("wikipediauserbox")
+        //output format: htmlcollection
+      
+      if (ubx_tables.length != 0) {
+        html_string = html_string.concat("<h6>" + user_title.textContent.split(':')[1] + "'s Userboxes</h6>")
+
+        for (j=0, ubx_tables; j < ubx_tables.length; j++){
+          html_string = html_string.concat(ubx_tables[j].innerHTML)
+          console.log(html_string)
+
+        }
+      
+      console.log(html_string.length)
+      document.getElementById("ubx").innerHTML = html_string
+
+      }
+
+
+      } 
+
     
 
-    // Scraping userboxes
-    var ubx = new XMLHttpRequest()
-    ubx.onload = function() {
-      ubx_table = this.responseXML.getElementsByClassName("userboxes")[0]
-      if (typeof ubx_table !== "undefined") {
-        all_userboxes.push(ubx_table);
-        // document.getElementsById("ubx").innerHTML = all_userboxes[0]
-      }
+
       
-    } 
 
-    ubx.open("GET", "https://en.wikipedia.org/wiki/User:" + all_user_names[i]);
-    ubx.responseType = "document";
-    ubx.send()
+      xhr.open("GET", "https://en.wikipedia.org/wiki/User:" + all_user_names[i]);
+      xhr.responseType = "document";
+      xhr.send()
 
 
-    // Reading HTML attributes of page retrieved
-    function HTMLinXHR() {
-      if (!window.XMLHttpRequest)
+      // Reading HTML attributes of page retrieved
+      function HTMLinXHR() {
+        if (!window.XMLHttpRequest)
+          return false;
+        var req = new window.XMLHttpRequest();
+        req.open('GET', window.location.href, false);
+        try {
+          req.responseType = 'document';
+        } catch(e) {
+          return true;
+        }
         return false;
-      var req = new window.XMLHttpRequest();
-      req.open('GET', window.location.href, false);
-      try {
-        req.responseType = 'document';
-      } catch(e) {
-        return true;
-      }
-      return false;
-      }
-      
-    }
-
-    console.log(all_userboxes)
-
-    
+        }
 
     }
+
+
+  }
 
   xhr.open("GET", "https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/"+url_tab);
   xhr.responseType = "document";
