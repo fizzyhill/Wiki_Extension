@@ -18,6 +18,7 @@ function displayTab(tab){
 }
 
 // Chained function too
+
 // Actual code nested
 function get_page(url) {
 
