@@ -12,10 +12,10 @@
   "page_action": {
       "default_title": "Set this page's color.",
        "default_icon": {
-      "16": "images/icon16.png",
-      "32": "images/icon32.png",
-      "64": "images/icon64.png",
-      "128": "images/icon128.png"
+      "16": "images/icon.png",
+      "32": "images/icon.png",
+      "64": "images/icon.png",
+      "128": "images/icon.png"
     },
       "default_popup": "popup.html"
   },
