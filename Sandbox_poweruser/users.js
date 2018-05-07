@@ -73,21 +73,18 @@ function get_page(url) {
 
         for (j=0, ubx_tables; j < ubx_tables.length; j++){
           html_string = html_string.concat(ubx_tables[j].innerHTML)
-          console.log(html_string)
 
         }
       
-      console.log(html_string.length)
+      html_string = html_string.split('src="//').join('src="https://')
+      html_string = html_string.split('<a href="/wiki').join('<a href="https://en.wikipedia.org/wiki')
+
       document.getElementById("ubx").innerHTML = html_string
 
       }
 
 
       } 
-
-    
-
-
       
 
       xhr.open("GET", "https://en.wikipedia.org/wiki/User:" + all_user_names[i]);
