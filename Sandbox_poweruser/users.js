@@ -107,7 +107,7 @@ function get_page(url) {
         //output format: htmlcollection
       
       if (ubx_tables.length != 0) {
-        html_string = html_string.concat("<h6>" + user_title.textContent.split(':')[1] + "'s Userboxes</h6>")
+        html_string = html_string.concat("<h6>" + user_title.textContent.split(':')[1] + "</h6>")
 
         for (j=0, ubx_tables; j < ubx_tables.length; j++){
           html_string = html_string.concat(ubx_tables[j].innerHTML)
