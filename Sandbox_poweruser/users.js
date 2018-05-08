@@ -81,7 +81,6 @@ function get_page(url) {
       
       html_string = html_string.split('src="//').join('src="https://')
       html_string = html_string.split('<a href="/wiki').join('<a href="https://en.wikipedia.org/wiki')
-      html_string = html_string.split('srcset="//').join('srcset="https://')
 
       document.getElementById("ubx").innerHTML = html_string
 
