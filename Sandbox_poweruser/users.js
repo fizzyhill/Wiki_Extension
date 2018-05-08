@@ -17,7 +17,7 @@ function displayTab(tab){
   return tab
 }
 
-// Chained function too
+// Another chained function
 
 // Actual code nested
 function get_page(url) {
@@ -61,9 +61,10 @@ function get_page(url) {
       document.getElementsByClassName('block-log-link')[i].href = "https://en.wikipedia.org/w/index.php?title=Special:Log/block&page=" + all_user_names[i];
     }
 
-  //test - get edits in last month
+  // Retrieve number of edits in the last month
 
 
+  // Retrieve today's date
   var today = new Date();
   console.log(today)
   var mm = today.getMonth()
@@ -97,8 +98,8 @@ function get_page(url) {
   var a_month_ago = yyyy + '-' + mm + '-' + dd +'T' + hour + ':' + minutes + ':' + seconds + 'Z'
   console.log(a_month_ago)
 
-    //test - get edits in last month
-var getJSON = function(url, callback) {
+  // API call to MediaWiki
+  var getJSON = function(url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'json';
@@ -133,8 +134,8 @@ var getJSON = function(url, callback) {
     }
   )
 
-// test - get block
-    var getJSON = function(url, callback) {
+  // Retrieve top contributors' block logs from MediaWiki API
+  var getJSON = function(url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'json';
@@ -167,11 +168,10 @@ var getJSON = function(url, callback) {
       }
     }
   })
-// end of test
 
-
-    var html_string = ''
-    for (i=0, all_user_names; i < 20; i++){
+  // Scrape top contributors' userboxes from Wikipedia user pages
+  var html_string = ''
+  for (i=0, all_user_names; i < 20; i++){
       // Scraping userboxes
       var xhr = new XMLHttpRequest()
       xhr.onload = function() { //getting all userboxes of one user page. 
@@ -216,19 +216,19 @@ var getJSON = function(url, callback) {
         return false;
         }
 
-    }
-
-
-
   }
 
 
-  xhr.open("GET", "https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/"+url_tab);
-  xhr.responseType = "document";
-  xhr.send();
 
-  // Reading HTML attributes of page retrieved
-  function HTMLinXHR() {
+}
+
+
+xhr.open("GET", "https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/"+url_tab);
+xhr.responseType = "document";
+xhr.send();
+
+// Reading HTML attributes of page retrieved
+function HTMLinXHR() {
     if (!window.XMLHttpRequest)
       return false;
     var req = new window.XMLHttpRequest();
@@ -239,11 +239,11 @@ var getJSON = function(url, callback) {
       return true;
     }
     return false;
-  }
+}
 
-  // Request for getting page creation and number of edits
+// Request for getting page creation and number of edits
 
-  var getJSON = function(url, callback) {
+var getJSON = function(url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'json';
@@ -256,9 +256,9 @@ var getJSON = function(url, callback) {
         }
       };
       xhr.send();
-  };
+};
 
-  getJSON('https://xtools.wmflabs.org/api/page/articleinfo/en.wikipedia.org/'+url_tab,
+getJSON('https://xtools.wmflabs.org/api/page/articleinfo/en.wikipedia.org/'+url_tab,
   function(err, data) {
     if (err !== null) {
       console.log(err);
@@ -275,7 +275,7 @@ var getJSON = function(url, callback) {
 
 }
 
-// Calling main function - asynchronous won't be problematic
+// Calling main function (resolve async issue)
 getCurrentTab(displayTab)
 
 

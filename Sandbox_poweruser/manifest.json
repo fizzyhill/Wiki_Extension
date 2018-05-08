@@ -1,6 +1,6 @@
 {
-  "name": "A browser action with a popup that returns wikipedia page infos",
-  "description": "Check out wiki page info",
+  "name": "WikiJam",
+  "description": "A browser extension that provides profiles for wikipedia pages and contributors",
   "version": "1.0",
   "permissions": [
     "activeTab", "declarativeContent", "storage", "tabs"
