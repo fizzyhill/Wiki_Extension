@@ -58,8 +58,6 @@ function get_page(url) {
       document.getElementsByClassName("cell-2")[i].innerHTML = number_edits[i]
       document.getElementsByClassName("cell-3")[i].innerHTML = size_edits[i]
 
-
-
     }
 // test - get block
     var getJSON = function(url, callback) {
@@ -86,9 +84,11 @@ function get_page(url) {
       for (i=0; i < 20; i++){
         if (data.query.users[i].hasOwnProperty('blockedtimestamp')) {
         document.getElementsByClassName("cell-4")[i].innerHTML = data.query.users[i].blockedtimestamp.split('T')[0]
-
+        console.log(i)
+        console.log(data.query.users[i].blockedtimestamp.split('T')[0])
       } else {
         document.getElementsByClassName("cell-4")[i].innerHTML = ' '
+        console.log(i)
 
       }
       }
