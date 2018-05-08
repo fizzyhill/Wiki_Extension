@@ -56,6 +56,8 @@ function get_page(url) {
       document.getElementsByClassName('link-user')[i].href = "https://en.wikipedia.org/wiki/User:" + all_user_names[i];
       document.getElementsByClassName("cell-2")[i].innerHTML = number_edits[i]
       document.getElementsByClassName("cell-3")[i].innerHTML = size_edits[i]
+
+
     }
 
 
@@ -79,6 +81,7 @@ function get_page(url) {
       
       html_string = html_string.split('src="//').join('src="https://')
       html_string = html_string.split('<a href="/wiki').join('<a href="https://en.wikipedia.org/wiki')
+      html_string = html_string.split('srcset="//').join('srcset="https://')
 
       document.getElementById("ubx").innerHTML = html_string
 
