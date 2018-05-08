@@ -72,13 +72,14 @@
     }
 
 
-
     table {
     border-collapse: collapse;
     width:100%;
     margin: auto;
     font-size: 1.1em;
     background-color: #F8F9FA;
+    word-break: break-all;
+    word-wrap: break-word;
     }
 
     table, th, td {
@@ -92,6 +93,16 @@
       padding:4px;
     }
 
+    #cell1{
+      width: 120px;
+      max-width: 120px
+    }
+
+    #cell4{
+      width: 90px;
+      max-width: 90px
+    }
+
     span{
       font-weight:600;
       font-size: 1em
@@ -100,9 +111,6 @@
     a{
       color:#0E54BF;
     }
-
-
-
 
 
     div:hover {
