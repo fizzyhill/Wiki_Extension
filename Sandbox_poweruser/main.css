@@ -7,11 +7,14 @@
 
     }
 
+
+
+
     #header{
-    height: 70px;
+    height: 150px;
     width: 100%;
     display: flex;
-    position:fixed;
+    position: relative;
     box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.02);
     align-items: center;
     padding:15px 15px 15px 15px;
@@ -36,12 +39,13 @@
     }
 
 
+
     .contributors_table
       {font-family:'Avenir'}
 
     .logo{
-    height: 50px;
-    width: 50px;
+    height: 90px;
+    width: 90px;
     margin: 8px 8px 8px 8px;
     }
 
