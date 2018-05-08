@@ -86,8 +86,10 @@ function get_page(url) {
       for (i=0; i < 20; i++){
         if (data.query.users[i].hasOwnProperty('blockedtimestamp')) {
         document.getElementsByClassName("cell-4")[i].innerHTML = data.query.users[i].blockedtimestamp.split('T')[0]
+
       } else {
         document.getElementsByClassName("cell-4")[i].innerHTML = ' '
+
       }
       }
     }
