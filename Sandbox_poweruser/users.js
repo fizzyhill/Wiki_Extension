@@ -30,6 +30,7 @@ function get_page(url) {
   var number_edits = []
   var size_edits = []
   var table_here = document.getElementById("myTable")
+  var block_logs = new Array()
 
   table_here.createTHead()
 
@@ -58,7 +59,40 @@ function get_page(url) {
       document.getElementsByClassName("cell-3")[i].innerHTML = size_edits[i]
 
 
+
     }
+// test - get block
+    var getJSON = function(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function() {
+        var status = xhr.status;
+        if (status === 200) {
+          callback(null, xhr.response);
+        } else {
+          callback(status, xhr.response);
+        }
+      };
+      xhr.send();
+  };
+
+  getJSON('https://en.wikipedia.org/w/api.php?action=query&format=json&list=users&usprop=blockinfo&ususers='+all_user_names[0]+'|'+all_user_names[1]+'|'+all_user_names[2]+'|'+all_user_names[3]+'|'+all_user_names[4]+'|'+all_user_names[5]+'|'+all_user_names[6]+'|'+all_user_names[7]+'|'+all_user_names[8]+'|'+all_user_names[9]+'|'+all_user_names[10]+'|'+all_user_names[11]+'|'+all_user_names[12]+'|'+all_user_names[13]+'|'+all_user_names[14]+'|'+all_user_names[15]+'|'+all_user_names[16]+'|'+all_user_names[17]+'|'+all_user_names[18]+'|'+all_user_names[19],
+  function(err, data) {
+    if (err !== null) {
+      console.log(err);
+    } else {
+      console.log(data);
+      for (i=0; i < 20; i++){
+        if (data.query.users[i].hasOwnProperty('blockedtimestamp')) {
+        document.getElementsByClassName("cell-4")[i].innerHTML = data.query.users[i].blockedtimestamp.split('T')[0]
+      } else {
+        document.getElementsByClassName("cell-4")[i].innerHTML = ' '
+      }
+      }
+    }
+  })
+// end of test
 
 
     var html_string = ''
@@ -67,7 +101,6 @@ function get_page(url) {
       var xhr = new XMLHttpRequest()
       xhr.onload = function() { //getting all userboxes of one user page. 
       var user_title = this.responseXML.getElementsByClassName("firstHeading")[0]
-      console.log(user_title.textContent)
       var ubx_tables = this.responseXML.getElementsByClassName("wikipediauserbox")
         //output format: htmlcollection
       
@@ -85,7 +118,6 @@ function get_page(url) {
       document.getElementById("ubx").innerHTML = html_string
 
       }
-
 
       } 
       
@@ -112,7 +144,9 @@ function get_page(url) {
     }
 
 
+
   }
+
 
   xhr.open("GET", "https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/"+url_tab);
   xhr.responseType = "document";
