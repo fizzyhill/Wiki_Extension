@@ -57,8 +57,8 @@ function get_page(url) {
       document.getElementsByClassName('link-user')[i].href = "https://en.wikipedia.org/wiki/User:" + all_user_names[i];
       document.getElementsByClassName("cell-2")[i].innerHTML = number_edits[i]
       document.getElementsByClassName("cell-3")[i].innerHTML = size_edits[i]
-      //get link to block logs? doesn't work. 
-      //document.getElementsByClassName('block-log-link')[i].href = "https://en.wikipedia.org/w/index.php?title=Special:Log/block&page=" + all_user_names[i];
+      //get link to block logs? doesn't work in html. 
+      document.getElementsByClassName('block-log-link')[i].href = "https://en.wikipedia.org/w/index.php?title=Special:Log/block&page=" + all_user_names[i];
     }
 // test - get block
     var getJSON = function(url, callback) {
