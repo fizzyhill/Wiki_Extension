@@ -57,7 +57,8 @@ function get_page(url) {
       document.getElementsByClassName('link-user')[i].href = "https://en.wikipedia.org/wiki/User:" + all_user_names[i];
       document.getElementsByClassName("cell-2")[i].innerHTML = number_edits[i]
       document.getElementsByClassName("cell-3")[i].innerHTML = size_edits[i]
-
+      //get link to block logs? doesn't work. 
+      //document.getElementsByClassName('block-log-link')[i].href = "https://en.wikipedia.org/w/index.php?title=Special:Log/block&page=" + all_user_names[i];
     }
 // test - get block
     var getJSON = function(url, callback) {
@@ -83,14 +84,11 @@ function get_page(url) {
       console.log(data);
       for (i=0; i < 20; i++){
         if (data.query.users[i].hasOwnProperty('blockedtimestamp')) {
-
         console.log(data.query.users[i].name)
         document.getElementsByClassName("cell-4")[all_user_names.indexOf(data.query.users[i].name)].innerHTML = data.query.users[i].blockedtimestamp.split('T')[0]
-        console.log(i)
         console.log(data.query.users[i].blockedtimestamp.split('T')[0])
       } else {
         document.getElementsByClassName("cell-4")[all_user_names.indexOf(data.query.users[i].name)].innerHTML = ' '
-        console.log(i)
 
       }
       }
