@@ -60,6 +60,79 @@ function get_page(url) {
       //get link to block logs? doesn't work in html. 
       document.getElementsByClassName('block-log-link')[i].href = "https://en.wikipedia.org/w/index.php?title=Special:Log/block&page=" + all_user_names[i];
     }
+
+  //test - get edits in last month
+
+
+  var today = new Date();
+  console.log(today)
+  var mm = today.getMonth()
+  var dd = today.getDate()
+  var yyyy = today.getFullYear()
+  var hour = today.getHours()
+  var minutes = today.getMinutes()
+  var seconds = today.getSeconds()
+
+
+  if(dd<10) {
+    dd = '0'+dd
+  } 
+
+  if(mm<10) {
+    mm = '0'+mm
+  } 
+
+  if(hour<10) {
+    hour = '0'+hour
+  } 
+
+  if(minutes<10) {
+    minutes = '0'+minutes
+  } 
+
+  if(seconds<10) {
+    seconds = '0'+seconds
+  } 
+
+  var a_month_ago = yyyy + '-' + mm + '-' + dd +'T' + hour + ':' + minutes + ':' + seconds + 'Z'
+  console.log(a_month_ago)
+
+    //test - get edits in last month
+var getJSON = function(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function() {
+        var status = xhr.status;
+        if (status === 200) {
+          callback(null, xhr.response);
+        } else {
+          callback(status, xhr.response);
+        }
+      };
+      xhr.send();
+  };
+
+  getJSON('https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&formatversion=2&rvprop=timestamp&rvlimit=max&rvend=' + a_month_ago + '&titles=' + url_tab,
+  function(err, data) {
+    if (err !== null) {
+      console.log(err);
+    } else {
+      console.log(data);
+      
+      if (data.query.pages[0].hasOwnProperty('revisions')) {
+        console.log(data.query.pages[0].revisions.length)
+        document.getElementById('h5-span-last-month').innerHTML = data.query.pages[0].revisions.length; 
+      } else {
+        console.log('0');
+        document.getElementById('h5-span-last-month').innerHTML = 0
+      }
+
+      }
+      
+    }
+  )
+
 // test - get block
     var getJSON = function(url, callback) {
       var xhr = new XMLHttpRequest();
