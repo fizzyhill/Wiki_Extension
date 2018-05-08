@@ -83,11 +83,13 @@ function get_page(url) {
       console.log(data);
       for (i=0; i < 20; i++){
         if (data.query.users[i].hasOwnProperty('blockedtimestamp')) {
-        document.getElementsByClassName("cell-4")[i].innerHTML = data.query.users[i].blockedtimestamp.split('T')[0]
+
+        console.log(data.query.users[i].name)
+        document.getElementsByClassName("cell-4")[all_user_names.indexOf(data.query.users[i].name)].innerHTML = data.query.users[i].blockedtimestamp.split('T')[0]
         console.log(i)
         console.log(data.query.users[i].blockedtimestamp.split('T')[0])
       } else {
-        document.getElementsByClassName("cell-4")[i].innerHTML = ' '
+        document.getElementsByClassName("cell-4")[all_user_names.indexOf(data.query.users[i].name)].innerHTML = ' '
         console.log(i)
 
       }
