@@ -218,6 +218,7 @@ function get_page(url) {
 
   }
 
+    clearScreen()
 
 
 }
@@ -277,5 +278,10 @@ getJSON('https://xtools.wmflabs.org/api/page/articleinfo/en.wikipedia.org/'+url_
 
 // Calling main function (resolve async issue)
 getCurrentTab(displayTab)
+
+function clearScreen() {
+    var load_screen = document.getElementById("load_screen");
+    document.body.removeChild(load_screen)
+}
 
 
